@@ -54,9 +54,7 @@ namespace AspNetIdentity.WebApi.Controllers {
             if (!AppUserManager.CheckPassword(user, model.Password)) {
                 return BadRequest("Invalid password.");
             }
-            var identity = new ClaimsIdentity();
-            identity.AddClaim(new Claim(ClaimTypes.Name, user.UserName));
-            identity.AddClaim(new Claim(ClaimTypes.Email, user.Email));
+            var identity = AppUserManager.CreateIdentity(user, DefaultAuthenticationTypes.ApplicationCookie);
             var auth = Request.GetOwinContext().Authentication;
             auth.SignIn(identity);
             return Ok();
