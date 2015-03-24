@@ -2,7 +2,7 @@
 /// <reference path="D:\Projects\asp-net-identity\src\AspNetIdentity.WebApi\bower_components/angular-route/angular-route.js" />
 
 angular.module('demoApp', ['ngRoute'])
-.controller('Mai nController', function ($scope) {
+.controller('WelcomeController', function ($scope) {
 })
 
 .controller('LoginController', function ($scope) {
@@ -14,11 +14,18 @@ angular.module('demoApp', ['ngRoute'])
 })
 
 .config(function ($routeProvider, $locationProvider) {
-    $routeProvider.when('/login', {
+    $routeProvider
+    .when('/login', {
         templateUrl: 'login.html',
         controller: 'LoginController'
     })
     .when('/register', {
-        templateUrl:
+        templateUrl: 'register.html',
+        controller: 'RegisterController'
     })
+    .when('/welcome', {
+        templateUrl: 'welcome.html',
+        controller: 'WelcomeController'
+    })
+    .otherwise({ redirectTo: '/welcome' });
 });
