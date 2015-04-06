@@ -1,13 +1,17 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>ASP.NET Identity with WebApi Demo</title>
     <link href="bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="style.css" rel="stylesheet" />
 </head>
 <body ng-app="demoApp">
-    <h1>ASP.NET Identity with WebApi Demo</h1>
-    <div ng-view class="view-frame"></div>
+    <div class="container">
+        <h1>ASP.NET Identity Demo</h1>
+        <div ng-view class="view-frame"></div>
+    </div>
+
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -18,13 +22,11 @@
         <h2>welcome</h2>
 
         <div>
-            <a href="#/register">Register</a>
+            <a href="#/login" class="btn btn-default btn-lg btn-success">Login</a>
+            Or
+            <a href="#/register" class="btn btn-default btn-lg btn-info">Register</a>
         </div>
 
-        <div>
-            <a href="#/login">Login</a>
-        </div>
-    
     </script>
 
     <script id="register.html" type="text/ng-template">
@@ -32,9 +34,29 @@
     </script>
 
     <script id="login.html" type="text/ng-template">
-        <h2>Login</h2>
-
-
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">Login</div>
+            </div>
+            <div class="panel-body">
+                <form name="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input id="username" name="username" type="text" class="form-control" placeholder="Enter username."
+                               ng-model="loginParams.username" required/>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input id="password" name="password" type="password" class="form-control" placeholder="Enter password."
+                               ng-model="loginParams.password" required/>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary" type="button" value="Login" disabled="{{loginForm.$invalid}}"/>
+                        <input class="btn btn-default" type="reset" value="Reset"/>
+                    </div>
+                </form>
+            </div>
+        </div>
     </script>
 
 </body>

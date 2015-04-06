@@ -130,6 +130,7 @@
     <Content Include="bower_components\angular-bootstrap\ui-bootstrap-tpls.js" />
     <Content Include="bower_components\angular-route\angular-route.js" />
     <Content Include="bower_components\angular\angular.js" />
+    <Content Include="bower_components\bootstrap\dist\css\bootstrap.css" />
     <Content Include="index.html" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
@@ -146,6 +147,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AesSecureDataFormat.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\BaseApiController.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />

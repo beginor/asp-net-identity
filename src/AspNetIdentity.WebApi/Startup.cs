@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Net.Http.Formatting;
 using System.Web.Http;
 using AspNetIdentity.WebApi;
@@ -7,6 +8,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Cors;
 using Newtonsoft.Json.Serialization;
 using Owin;
+using Microsoft.Owin.Security.DataHandler;
+using Microsoft.Owin.Security.DataHandler.Serializer;
+using Microsoft.Owin.Security;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -19,6 +23,12 @@ namespace AspNetIdentity.WebApi {
             var httpConfig = new HttpConfiguration();
             ConfigureOAuthTokenGeneration(app);
             ConfigureWebApi(httpConfig);
+
+            app.UseCookieAuthentication(new Microsoft.Owin.Security.Cookies.CookieAuthenticationOptions {
+                TicketDataFormat = new TicketDataFormat(new Beginor.Owin.Secrity.Aes.AesDataProtector("MySecurityAesKey"))
+            });
+
+            PropertiesDataFormat f = new PropertiesDataFormat(
 
             app.UseCors(CorsOptions.AllowAll);
             app.UseWebApi(httpConfig);
@@ -39,4 +49,5 @@ namespace AspNetIdentity.WebApi {
         }
 
     }
+
 }

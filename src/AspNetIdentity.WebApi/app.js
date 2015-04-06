@@ -1,12 +1,15 @@
 ﻿/// <reference path="D:\Projects\asp-net-identity\src\AspNetIdentity.WebApi\bower_components/angular/angular.js" />
 /// <reference path="D:\Projects\asp-net-identity\src\AspNetIdentity.WebApi\bower_components/angular-route/angular-route.js" />
 
-angular.module('demoApp', ['ngRoute','ngAnimate'])
+angular.module('demoApp', ['ngRoute'/*,'ngAnimate'*/])
 .controller('WelcomeController', function ($scope) {
 })
 
 .controller('LoginController', function ($scope) {
-
+    $scope.loginParams = {
+        username: undefined,
+        password: undefined
+    };
 })
 
 .controller('RegisterController', function ($scope) {
